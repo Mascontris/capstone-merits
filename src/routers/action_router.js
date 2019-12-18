@@ -2,26 +2,25 @@ const express = require('express')
 const { isWebUri } = require('valid-url')
 const xss = require('xss')
 const logger = require('../logger')
-const kidService = require('../services/kid_service')
+const actionService = require('../services/action_service')
 
-const kidRouter = express.Router()
+const actionRouter = express.Router()
 const bodyParser = express.json()
 
-const serializeKid = kid => ({
-  id: kid.id,
-  name: xss(kid.name),
-  dob: kid.dob,
-  household_id: kid.household_id,
-  current_stars: kid.current_stars,
-  created_at: kid.created_at
+const serializeAction = action => ({
+  id: action.id,
+  description: xss(action.description),
+  kid_id: action.kid_id,
+  polarity: action.polarity,
+  created_at: action.created_at
 })
 
-kidRouter
-  .route('/kids')
+actionRouter
+  .route('/actions')
   .get((req, res, next) => {
-    kidService.getAllKids(req.app.get('db'))
-      .then(kids => {
-        res.json(kids.map(serializeKid))
+    actionService.getAllActions(req.app.get('db'))
+      .then(actions => {
+        res.json(actions.map(serializeAction))
       })
       .catch(next)
   })
@@ -102,4 +101,4 @@ kidRouter
 //       .catch(next)
 //   })
 
-module.exports = kidRouter
+module.exports = actionRouter

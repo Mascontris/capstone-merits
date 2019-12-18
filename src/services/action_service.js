@@ -1,6 +1,6 @@
-const KidService = {
-    getAllKids(knex) {
-      return knex.select('*').from('kid')
+const ActionService = {
+    getAllActions(knex) {
+      return knex.select('*').from('action')
     },
     //getById(knex, id) {
     //   return knex.from('kid').select('*').where('id', id).first()
@@ -26,4 +26,4 @@ const KidService = {
     // },
   }
   
-  module.exports = KidService
+  module.exports = ActionService

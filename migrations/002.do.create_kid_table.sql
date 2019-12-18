@@ -3,6 +3,6 @@ CREATE TABLE kid (
     name TEXT NOT NULL,
     dob DATE,
     household_id INTEGER,
-    current_stars TINYINT, 
+    current_stars SMALLINT, 
     created_at TIMESTAMP DEFAULT now() NOT NULL
 )

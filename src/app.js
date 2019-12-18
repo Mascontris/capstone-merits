@@ -6,6 +6,7 @@ const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
 const householdsRouter = require('../src/routers/household_router')
 const kidsRouter = require('../src/routers/kid_router')
+const actionRouter = require('../src/routers/action_router')
 
 const app = express()
 
@@ -19,6 +20,7 @@ app.use(helmet())
 
 app.use(householdsRouter)
 app.use(kidsRouter)
+app.use(actionRouter)
 
 app.get('/', (req, res) => {
   res.send('Hello, world!')
@@ -32,7 +34,7 @@ app.use(function errorHandler(error, req, res, next) {
     console.error(error)
     response = { message: error.message, error }
   }
-  res.response(500).json(response)
+  res.status(500).json(response)
 })
 
 module.exports = app

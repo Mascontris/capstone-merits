@@ -11,7 +11,7 @@ const serializeHousehold = household => ({
   id: household.id,
   name: xss(household.name),
   password: household.password,
-  created_at: household
+  created_at: household.created_at
 })
 
 householdRouter
