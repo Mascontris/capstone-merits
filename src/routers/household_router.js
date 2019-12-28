@@ -1,5 +1,5 @@
 const express = require('express')
-const { isWebUri } = require('valid-url')
+//const { isWebUri } = require('valid-url')
 const xss = require('xss')
 const logger = require('../logger')
 const householdService = require('../services/household_service')
@@ -24,6 +24,7 @@ householdRouter
       .catch(next)
   })
   .post(bodyParser, (req, res, next) => {
+    console.log(req.body)
     for (const field of ['name', 'password']) {
       if (!req.body[field]) {
         logger.error(`${field} is required`)
@@ -37,7 +38,7 @@ householdRouter
 
      const newHousehold = { name, password }
 
-    HouseholdsService.insertHousehold(
+    householdService.insertHousehold(
       req.app.get('db'),
       newHousehold
     )

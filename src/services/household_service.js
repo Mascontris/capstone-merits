@@ -1,19 +1,19 @@
-const HouseholdsService = {
+const householdsService = {
     getAllHouseholds(knex) {
       return knex.select('*').from('household')
     },
     getById(knex, id) {
        return knex.from('household').select('*').where('id', id).first()
     },
-    // insertHousehold(knex, newHousehold) {
-    //   return knex
-    //     .insert(newHousehold)
-    //     .into('households')
-    //     .returning('*')
-    //     .then(rows => {
-    //       return rows[0]
-    //     })
-    // },
+    insertHousehold(knex, newHousehold) {
+      return knex
+        .insert(newHousehold)
+        .into('household')
+        .returning('*')
+        .then(rows => {
+          return rows[0]
+        })
+    },
     // deleteHousehold(knex, id) {
     //   return knex('households')
     //     .where({ id })
@@ -26,4 +26,4 @@ const HouseholdsService = {
     // },
   }
   
-  module.exports = HouseholdsService
+  module.exports = householdsService
