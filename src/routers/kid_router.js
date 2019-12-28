@@ -1,9 +1,7 @@
 const express = require('express')
-const { isWebUri } = require('valid-url')
 const xss = require('xss')
 const logger = require('../logger')
 const kidService = require('../services/kid_service')
-
 const kidRouter = express.Router()
 const bodyParser = express.json()
 
@@ -25,70 +23,63 @@ kidRouter
       })
       .catch(next)
   })
-//   .post(bodyParser, (req, res, next) => {
-//     for (const field of ['title', 'url', 'rating']) {
-//       if (!req.body[field]) {
-//         logger.error(`${field} is required`)
-//         return res.status(400).send({
-//           error: { message: `'${field}' is required` }
-//         })
-//       }
-//     }
+  .post(bodyParser, (req, res, next) => {
+    for (const field of ['name', 'dob', 'current_stars']) {
+      if (!req.body[field]) {
+        logger.error(`${field} is required`)
+        return res.status(400).send({
+          error: { message: `'${field}' is required` }
+        })
+      }
+    }
 
-//     const { title, url, description, rating } = req.body
+     const { name, dob, current_stars } = req.body
 
-//     const ratingNum = Number(rating)
+     const stars = Number(current_stars)
 
-//     if (!Number.isInteger(ratingNum) || ratingNum < 0 || ratingNum > 5) {
-//       logger.error(`Invalid rating '${rating}' supplied`)
-//       return res.status(400).send({
-//         error: { message: `'rating' must be a number between 0 and 5` }
-//       })
-//     }
+    if (!Number.isInteger(stars) || stars < 0 || stars > 5) {
+      logger.error(`Invalid number of stars '${stars}' supplied`)
+      return res.status(400).send({
+        error: { message: `'stars' must be a number between 0 and 5` }
+      })
+    }
 
-//     if (!isWebUri(url)) {
-//       logger.error(`Invalid url '${url}' supplied`)
-//       return res.status(400).send({
-//         error: { message: `'url' must be a valid URL` }
-//       })
-//     }
+     const newKid = { name, dob, current_stars }
 
-//     const newBookmark = { title, url, description, rating }
+    kidService.insertKid(
+      req.app.get('db'),
+      newKid
+    )
+      .then(kid => {
+        logger.info(`Kid with id ${kid.id} created.`)
+        res
+          .status(201)
+          .location(`/households/${kid.id}`)
+          .json(serializeKid(kid))
+      })
+      .catch(next)
+  })
 
-//     BookmarksService.insertBookmark(
-//       req.app.get('db'),
-//       newBookmark
-//     )
-//       .then(bookmark => {
-//         logger.info(`Bookmark with id ${bookmark.id} created.`)
-//         res
-//           .status(201)
-//           .location(`/bookmarks/${bookmark.id}`)
-//           .json(serializeBookmark(bookmark))
-//       })
-//       .catch(next)
-//   })
-
-// bookmarksRouter
-//   .route('/bookmarks/:bookmark_id')
-//   .all((req, res, next) => {
-//     const { bookmark_id } = req.params
-//     BookmarksService.getById(req.app.get('db'), bookmark_id)
-//       .then(bookmark => {
-//         if (!bookmark) {
-//           logger.error(`Bookmark with id ${bookmark_id} not found.`)
-//           return res.status(404).json({
-//             error: { message: `Bookmark Not Found` }
-//           })
-//         }
-//         res.bookmark = bookmark
-//         next()
-//       })
-//       .catch(next)
-//   })
-//   .get((req, res) => {
-//     res.json(serializeBookmark(res.bookmark))
-//   })
+kidRouter
+  .route('/kids/:kid_id')
+  .all((req, res, next) => {
+    const { kid_id } = req.params
+    kidService.getById(req.app.get('db'), kid_id)
+      .then(kid => {
+        if (!kid) {
+          logger.error(`Kid with id ${kid_id} not found.`)
+          return res.status(404).json({
+            error: { message: `Kid Not Found` }
+          })
+        }
+        res.kid = kid
+        next()
+      })
+      .catch(next)
+  })
+  .get((req, res) => {
+    res.json(serializeKid(res.kid))
+  })
 //   .delete((req, res, next) => {
 //     const { bookmark_id } = req.params
 //     BookmarksService.deleteBookmark(

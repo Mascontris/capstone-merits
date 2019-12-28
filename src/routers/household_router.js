@@ -1,9 +1,7 @@
 const express = require('express')
-//const { isWebUri } = require('valid-url')
 const xss = require('xss')
 const logger = require('../logger')
 const householdService = require('../services/household_service')
-
 const householdRouter = express.Router()
 const bodyParser = express.json()
 
@@ -53,37 +51,37 @@ householdRouter
       .catch(next)
   })
 
-// bookmarksRouter
-//   .route('/bookmarks/:bookmark_id')
-//   .all((req, res, next) => {
-//     const { bookmark_id } = req.params
-//     BookmarksService.getById(req.app.get('db'), bookmark_id)
-//       .then(bookmark => {
-//         if (!bookmark) {
-//           logger.error(`Bookmark with id ${bookmark_id} not found.`)
-//           return res.status(404).json({
-//             error: { message: `Bookmark Not Found` }
-//           })
-//         }
-//         res.bookmark = bookmark
-//         next()
-//       })
-//       .catch(next)
-//   })
-//   .get((req, res) => {
-//     res.json(serializeBookmark(res.bookmark))
-//   })
-//   .delete((req, res, next) => {
-//     const { bookmark_id } = req.params
-//     BookmarksService.deleteBookmark(
-//       req.app.get('db'),
-//       bookmark_id
-//     )
-//       .then(numRowsAffected => {
-//         logger.info(`Bookmark with id ${bookmark_id} deleted.`)
-//         res.status(204).end()
-//       })
-//       .catch(next)
-//   })
+householdRouter
+  .route('/households/:household_id')
+  .all((req, res, next) => {
+    const { household_id } = req.params
+    householdService.getById(req.app.get('db'), household_id)
+      .then(household => {
+        if (!household) {
+          logger.error(`Household with id ${household_id} not found.`)
+          return res.status(404).json({
+            error: { message: `Household Not Found` }
+          })
+        }
+        res.household = household
+        next()
+      })
+      .catch(next)
+  })
+  .get((req, res) => {
+    res.json(serializeHousehold(res.household))
+  })
+  // .delete((req, res, next) => {
+  //   const { household_id } = req.params
+  //   householdService.deleteHousehold(
+  //     req.app.get('db'),
+  //     household_id
+  //   )
+  //     .then(numHouseholdAffected => {
+  //       logger.info(`Household with id ${household_id} deleted.`)
+  //       res.status(204).end()
+  //     })
+  //     .catch(next)
+  // })
 
 module.exports = householdRouter

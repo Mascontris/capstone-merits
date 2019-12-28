@@ -2,18 +2,18 @@ const ActionService = {
     getAllActions(knex) {
       return knex.select('*').from('action')
     },
-    //getById(knex, id) {
-    //   return knex.from('kid').select('*').where('id', id).first()
-    //},
-    // insertHousehold(knex, newHousehold) {
-    //   return knex
-    //     .insert(newHousehold)
-    //     .into('households')
-    //     .returning('*')
-    //     .then(rows => {
-    //       return rows[0]
-    //     })
-    // },
+    getById(knex, id) {
+      return knex.from('action').select('*').where('id', id).first()
+    },
+    insertAction(knex, newAction) {
+      return knex
+        .insert(newAction)
+        .into('action')
+        .returning('*')
+        .then(rows => {
+          return rows[0]
+        })
+    },
     // deleteHousehold(knex, id) {
     //   return knex('households')
     //     .where({ id })

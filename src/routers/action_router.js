@@ -1,5 +1,4 @@
 const express = require('express')
-const { isWebUri } = require('valid-url')
 const xss = require('xss')
 const logger = require('../logger')
 const actionService = require('../services/action_service')
@@ -24,70 +23,63 @@ actionRouter
       })
       .catch(next)
   })
-//   .post(bodyParser, (req, res, next) => {
-//     for (const field of ['title', 'url', 'rating']) {
-//       if (!req.body[field]) {
-//         logger.error(`${field} is required`)
-//         return res.status(400).send({
-//           error: { message: `'${field}' is required` }
-//         })
-//       }
-//     }
+  .post(bodyParser, (req, res, next) => {
+    for (const field of ['description', 'polarity']) {
+      if (!req.body[field]) {
+        logger.error(`${field} is required`)
+        return res.status(400).send({
+          error: { message: `'${field}' is required` }
+        })
+      }
+    }
 
-//     const { title, url, description, rating } = req.body
+     const { description, polarity } = req.body
 
-//     const ratingNum = Number(rating)
+    // const pole = Boolean(polarity)
 
-//     if (!Number.isInteger(ratingNum) || ratingNum < 0 || ratingNum > 5) {
-//       logger.error(`Invalid rating '${rating}' supplied`)
-//       return res.status(400).send({
-//         error: { message: `'rating' must be a number between 0 and 5` }
-//       })
-//     }
+    // if (!Boolean.isBoolean(pole)) {
+    //   logger.error(`Invalid True/False response '${rating}' supplied`)
+    //   return res.status(400).send({
+    //     error: { message: `'polarity' must be a number True or False` }
+    //   })
+    // }
 
-//     if (!isWebUri(url)) {
-//       logger.error(`Invalid url '${url}' supplied`)
-//       return res.status(400).send({
-//         error: { message: `'url' must be a valid URL` }
-//       })
-//     }
+     const newAction = { description, polarity }
 
-//     const newBookmark = { title, url, description, rating }
+    actionService.insertAction(
+      req.app.get('db'),
+      newAction
+    )
+      .then(action => {
+        logger.info(`Action with id ${action.id} created.`)
+        res
+          .status(201)
+          .location(`/Actions/${action.id}`)
+          .json(serializeAction(action))
+      })
+      .catch(next)
+  })
 
-//     BookmarksService.insertBookmark(
-//       req.app.get('db'),
-//       newBookmark
-//     )
-//       .then(bookmark => {
-//         logger.info(`Bookmark with id ${bookmark.id} created.`)
-//         res
-//           .status(201)
-//           .location(`/bookmarks/${bookmark.id}`)
-//           .json(serializeBookmark(bookmark))
-//       })
-//       .catch(next)
-//   })
-
-// bookmarksRouter
-//   .route('/bookmarks/:bookmark_id')
-//   .all((req, res, next) => {
-//     const { bookmark_id } = req.params
-//     BookmarksService.getById(req.app.get('db'), bookmark_id)
-//       .then(bookmark => {
-//         if (!bookmark) {
-//           logger.error(`Bookmark with id ${bookmark_id} not found.`)
-//           return res.status(404).json({
-//             error: { message: `Bookmark Not Found` }
-//           })
-//         }
-//         res.bookmark = bookmark
-//         next()
-//       })
-//       .catch(next)
-//   })
-//   .get((req, res) => {
-//     res.json(serializeBookmark(res.bookmark))
-//   })
+actionRouter
+  .route('/actions/:action_id')
+  .all((req, res, next) => {
+    const { action_id } = req.params
+    actionService.getById(req.app.get('db'), action_id)
+      .then(action => {
+        if (!action) {
+          logger.error(`Action with id ${action_id} not found.`)
+          return res.status(404).json({
+            error: { message: `Action Not Found` }
+          })
+        }
+        res.action = action
+        next()
+      })
+      .catch(next)
+  })
+  .get((req, res) => {
+    res.json(serializeAction(res.action))
+  })
 //   .delete((req, res, next) => {
 //     const { bookmark_id } = req.params
 //     BookmarksService.deleteBookmark(
