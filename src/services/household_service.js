@@ -14,13 +14,14 @@ const householdsService = {
           return rows[0]
         })
     },
-    // deleteHousehold(knex, id) {
-    //   return knex('households')
-    //     .where({ id })
-    //     .delete()
-    // },
+    deleteHousehold(knex, household_id) {
+      console.log(household_id)
+      return knex('household')
+        .where({ id: household_id })
+        .delete()
+    },
     // updateHousehold(knex, id, newHouseholdFields) {
-    //   return knex('households')
+    //   return knex('household')
     //     .where({ id })
     //     .update(newHouseholdFields)
     // },

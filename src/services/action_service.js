@@ -14,11 +14,11 @@ const ActionService = {
           return rows[0]
         })
     },
-    // deleteHousehold(knex, id) {
-    //   return knex('households')
-    //     .where({ id })
-    //     .delete()
-    // },
+    deleteAction(knex, action_id) {
+      return knex('action')
+        .where({ id: action_id })
+        .delete()
+    },
     // updateHousehold(knex, id, newHouseholdFields) {
     //   return knex('households')
     //     .where({ id })

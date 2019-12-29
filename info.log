@@ -1,3 +1,13 @@
 {"message":"household with id 4 created.","level":"info"}
 {"message":"Kid with id 4 created.","level":"info"}
 {"message":"Action with id 4 created.","level":"info"}
+{"message":"Action with id 5 created.","level":"info"}
+{"message":"Household with id 1 not found.","level":"error"}
+{"message":"household with id 5 created.","level":"info"}
+{"message":"Household with id 1 not found.","level":"error"}
+{"message":"Household with id 1 not found.","level":"error"}
+{"message":"Household with id 1 not found.","level":"error"}
+{"message":"Household with id 1 not found.","level":"error"}
+{"message":"Household with id 2 deleted.","level":"info"}
+{"message":"Kid with id 1 deleted.","level":"info"}
+{"message":"Action with id 1 deleted.","level":"info"}

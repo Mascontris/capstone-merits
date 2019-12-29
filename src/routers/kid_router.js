@@ -80,17 +80,17 @@ kidRouter
   .get((req, res) => {
     res.json(serializeKid(res.kid))
   })
-//   .delete((req, res, next) => {
-//     const { bookmark_id } = req.params
-//     BookmarksService.deleteBookmark(
-//       req.app.get('db'),
-//       bookmark_id
-//     )
-//       .then(numRowsAffected => {
-//         logger.info(`Bookmark with id ${bookmark_id} deleted.`)
-//         res.status(204).end()
-//       })
-//       .catch(next)
-//   })
+  .delete((req, res, next) => {
+    const { kid_id } = req.params
+    kidService.deleteKid(
+      req.app.get('db'),
+      kid_id
+    )
+      .then(kidAffected => {
+        logger.info(`Kid with id ${kid_id} deleted.`)
+        res.status(204).end()
+      })
+      .catch(next)
+  })
 
 module.exports = kidRouter

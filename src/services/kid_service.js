@@ -14,11 +14,11 @@ const KidService = {
           return rows[0]
         })
     },
-    // deleteHousehold(knex, id) {
-    //   return knex('households')
-    //     .where({ id })
-    //     .delete()
-    // },
+    deleteKid(knex, kid_id) {
+      return knex('kid')
+        .where({ id: kid_id })
+        .delete()
+    },
     // updateHousehold(knex, id, newHouseholdFields) {
     //   return knex('households')
     //     .where({ id })

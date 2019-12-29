@@ -71,17 +71,17 @@ householdRouter
   .get((req, res) => {
     res.json(serializeHousehold(res.household))
   })
-  // .delete((req, res, next) => {
-  //   const { household_id } = req.params
-  //   householdService.deleteHousehold(
-  //     req.app.get('db'),
-  //     household_id
-  //   )
-  //     .then(numHouseholdAffected => {
-  //       logger.info(`Household with id ${household_id} deleted.`)
-  //       res.status(204).end()
-  //     })
-  //     .catch(next)
-  // })
+  .delete((req, res, next) => {
+    const { household_id } = req.params
+    householdService.deleteHousehold(
+      req.app.get('db'),
+      household_id
+    )
+      .then(householdAffected => {
+        logger.info(`Household with id ${household_id} deleted.`)
+        res.status(204).end()
+      })
+      .catch(next)
+  })
 
 module.exports = householdRouter

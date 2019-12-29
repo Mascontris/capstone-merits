@@ -80,17 +80,17 @@ actionRouter
   .get((req, res) => {
     res.json(serializeAction(res.action))
   })
-//   .delete((req, res, next) => {
-//     const { bookmark_id } = req.params
-//     BookmarksService.deleteBookmark(
-//       req.app.get('db'),
-//       bookmark_id
-//     )
-//       .then(numRowsAffected => {
-//         logger.info(`Bookmark with id ${bookmark_id} deleted.`)
-//         res.status(204).end()
-//       })
-//       .catch(next)
-//   })
+  .delete((req, res, next) => {
+    const { action_id } = req.params
+    actionService.deleteAction(
+      req.app.get('db'),
+      action_id
+    )
+      .then(actionAffected => {
+        logger.info(`Action with id ${action_id} deleted.`)
+        res.status(204).end()
+      })
+      .catch(next)
+  })
 
 module.exports = actionRouter
