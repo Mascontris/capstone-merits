@@ -24,7 +24,7 @@ kidRouter
       .catch(next)
   })
   .post(bodyParser, (req, res, next) => {
-    for (const field of ['name', 'dob', 'current_stars']) {
+    for (const field of ['name', 'dob', 'household_id', 'current_stars']) {
       if (!req.body[field]) {
         logger.error(`${field} is required`)
         return res.status(400).send({
@@ -33,7 +33,7 @@ kidRouter
       }
     }
 
-     const { name, dob, current_stars } = req.body
+     const { name, dob, household_id, current_stars } = req.body
 
      const stars = Number(current_stars)
 
@@ -44,7 +44,7 @@ kidRouter
       })
     }
 
-     const newKid = { name, dob, current_stars }
+     const newKid = { name, dob, household_id, current_stars }
 
     kidService.insertKid(
       req.app.get('db'),

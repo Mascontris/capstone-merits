@@ -22,7 +22,6 @@ householdRouter
       .catch(next)
   })
   .post(bodyParser, (req, res, next) => {
-    console.log(req.body)
     for (const field of ['name', 'password']) {
       if (!req.body[field]) {
         logger.error(`${field} is required`)
@@ -79,7 +78,10 @@ householdRouter
     )
       .then(householdAffected => {
         logger.info(`Household with id ${household_id} deleted.`)
-        res.status(204).end()
+        res
+          .status(204)
+          .location(`/households`)
+          .end()
       })
       .catch(next)
   })

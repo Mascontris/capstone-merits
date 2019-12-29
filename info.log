@@ -11,3 +11,13 @@
 {"message":"Household with id 2 deleted.","level":"info"}
 {"message":"Kid with id 1 deleted.","level":"info"}
 {"message":"Action with id 1 deleted.","level":"info"}
+{"message":"Kid with id 5 created.","level":"info"}
+{"message":"household with id 6 created.","level":"info"}
+{"message":"Household with id 6 deleted.","level":"info"}
+{"message":"household with id 7 created.","level":"info"}
+{"message":"Household with id 7 deleted.","level":"info"}
+{"message":"household with id 8 created.","level":"info"}
+{"message":"Household with id 8 deleted.","level":"info"}
+{"message":"household with id 9 created.","level":"info"}
+{"message":"Household with id 9 deleted.","level":"info"}
+{"message":"Kid with id 6 created.","level":"info"}
