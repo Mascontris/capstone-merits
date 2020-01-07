@@ -24,7 +24,7 @@ actionRouter
       .catch(next)
   })
   .post(bodyParser, (req, res, next) => {
-    for (const field of ['description', 'polarity']) {
+    for (const field of ['description', 'kid_id', 'polarity']) {
       if (!req.body[field]) {
         logger.error(`${field} is required`)
         return res.status(400).send({
@@ -33,18 +33,16 @@ actionRouter
       }
     }
 
-     const { description, polarity } = req.body
+     const { description, kid_id, polarity } = req.body
 
-    // const pole = Boolean(polarity)
+    if (typeof polarity !== "boolean") {
+      logger.error(`Invalid True/False response '${polarity}' supplied`)
+      return res.status(400).send({
+        error: { message: `'polarity' must be a True or False` }
+      })
+    }
 
-    // if (!Boolean.isBoolean(pole)) {
-    //   logger.error(`Invalid True/False response '${rating}' supplied`)
-    //   return res.status(400).send({
-    //     error: { message: `'polarity' must be a number True or False` }
-    //   })
-    // }
-
-     const newAction = { description, polarity }
+     const newAction = { description, kid_id, polarity }
 
     actionService.insertAction(
       req.app.get('db'),

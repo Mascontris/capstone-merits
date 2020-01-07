@@ -80,6 +80,7 @@ householdRouter
         logger.info(`Household with id ${household_id} deleted.`)
         res
           .status(204)
+          //.location isn't routing the page to the table ??? 
           .location(`/households`)
           .end()
       })

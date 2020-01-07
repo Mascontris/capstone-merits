@@ -4,8 +4,8 @@ const morgan = require('morgan')
 const cors = require('cors')
 const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
-const householdsRouter = require('../src/routers/household_router')
-const kidsRouter = require('../src/routers/kid_router')
+const householdRouter = require('../src/routers/household_router')
+const kidRouter = require('../src/routers/kid_router')
 const actionRouter = require('../src/routers/action_router')
 
 const app = express()
@@ -18,8 +18,8 @@ app.use(morgan(morganOption))
 app.use(cors())
 app.use(helmet())
 
-app.use(householdsRouter)
-app.use(kidsRouter)
+app.use(householdRouter)
+app.use(kidRouter)
 app.use(actionRouter)
 
 app.get('/', (req, res) => {

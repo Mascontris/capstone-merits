@@ -21,3 +21,8 @@
 {"message":"household with id 9 created.","level":"info"}
 {"message":"Household with id 9 deleted.","level":"info"}
 {"message":"Kid with id 6 created.","level":"info"}
+{"message":"household with id 10 created.","level":"info"}
+{"message":"kid_id is required","level":"error"}
+{"message":"Invalid True/False response '3' supplied","level":"error"}
+{"message":"Invalid True/False response 'true' supplied","level":"error"}
+{"message":"Action with id 6 created.","level":"info"}

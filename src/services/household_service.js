@@ -15,7 +15,6 @@ const householdsService = {
         })
     },
     deleteHousehold(knex, household_id) {
-      console.log(household_id)
       return knex('household')
         .where({ id: household_id })
         .delete()
