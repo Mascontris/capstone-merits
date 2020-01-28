@@ -1,28 +1,28 @@
-const express = require('express')
-const xss = require('xss')
-const logger = require('../logger')
-const householdService = require('../services/household_service')
-const householdRouter = express.Router()
-const bodyParser = express.json()
+const express = require("express");
+const xss = require("xss");
+const logger = require("../logger");
+const householdService = require("../services/household_service");
+const householdRouter = express.Router();
+const bodyParser = express.json();
 
 const serializeHousehold = household => ({
   id: household.id,
   name: xss(household.name),
-  password: household.password,
-  created_at: household.created_at
-})
+  created_at: household.created_at.toTimeString()
+});
 
 householdRouter
-  .route('/households')
+  .route("/households")
   .get((req, res, next) => {
-    householdService.getAllHouseholds(req.app.get('db'))
+    householdService
+      .getAllHouseholds(req.app.get("db"))
       .then(households => {
-        res.json(households.map(serializeHousehold))
+        res.json(households.map(serializeHousehold));
       })
-      .catch(next)
+      .catch(next);
   })
   .post(bodyParser, (req, res, next) => {
-    for (const field of ['name', 'password']) {
+    for (const field of ['name']) {
       if (!req.body[field]) {
         logger.error(`${field} is required`)
         return res.status(400).send({
@@ -31,60 +31,58 @@ householdRouter
       }
     }
 
-     const { name, password } = req.body
+     const { name } = req.body
 
-     const newHousehold = { name, password }
+     const newHousehold = { name }
 
     householdService.insertHousehold(
       req.app.get('db'),
       newHousehold
     )
       .then(household => {
-        logger.info(`household with id ${household.id} created.`)
+        logger.info(`Household with id ${household.id} created.`)
         res
           .status(201)
           .location(`/households`)
-          //.location(`/households/${household.id}`)
           .json(serializeHousehold(household))
       })
       .catch(next)
   })
 
 householdRouter
-  .route('/households/:household_id')
+  .route("/households/:household_id")
   .all((req, res, next) => {
-    const { household_id } = req.params
-    householdService.getById(req.app.get('db'), household_id)
+    const { household_id } = req.params;
+    householdService
+      .getById(req.app.get("db"), household_id)
       .then(household => {
         if (!household) {
-          logger.error(`Household with id ${household_id} not found.`)
+          logger.error(`Household with id ${household_id} not found.`);
           return res.status(404).json({
             error: { message: `Household Not Found` }
-          })
+          });
         }
-        res.household = household
-        next()
+        res.household = household;
+        next();
       })
-      .catch(next)
+      .catch(next);
   })
   .get((req, res) => {
-    res.json(serializeHousehold(res.household))
+    res.json(serializeHousehold(res.household));
   })
   .delete((req, res, next) => {
-    const { household_id } = req.params
-    householdService.deleteHousehold(
-      req.app.get('db'),
-      household_id
-    )
+    const { household_id } = req.params;
+    householdService
+      .deleteHousehold(req.app.get("db"), household_id)
       .then(householdAffected => {
-        logger.info(`Household with id ${household_id} deleted.`)
+        logger.info(`Household with id ${household_id} deleted.`);
         res
           .status(204)
-          //.location isn't routing the page to the table ??? 
-          .location(`/households`)
-          .end()
+          //.location isn't routing the page to the table ???
+          .location(`/Login`)
+          .end();
       })
-      .catch(next)
-  })
+      .catch(next);
+  });
 
-module.exports = householdRouter
+module.exports = householdRouter;

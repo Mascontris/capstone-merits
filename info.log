@@ -26,3 +26,159 @@
 {"message":"Invalid True/False response '3' supplied","level":"error"}
 {"message":"Invalid True/False response 'true' supplied","level":"error"}
 {"message":"Action with id 6 created.","level":"info"}
+{"message":"Action with id 7 created.","level":"info"}
+{"message":"Household with id 1 not found.","level":"error"}
+{"message":"Household with id 1 not found.","level":"error"}
+{"message":"name is required","level":"error"}
+{"message":"name is required","level":"error"}
+{"message":"name is required","level":"error"}
+{"message":"name is required","level":"error"}
+{"message":"Kid with id 7 created.","level":"info"}
+{"message":"household with id undefined created.","level":"info"}
+{"message":"Household with id 13 created.","level":"info"}
+{"message":"Household with id 14 created.","level":"info"}
+{"message":"name is required","level":"error"}
+{"message":"Household with id 15 created.","level":"info"}
+{"message":"Household with id 11 deleted.","level":"info"}
+{"message":"Household with id 14 deleted.","level":"info"}
+{"message":"Household with id 14 not found.","level":"error"}
+{"message":"Household with id 14 not found.","level":"error"}
+{"message":"Household with id 12 deleted.","level":"info"}
+{"message":"Household with id 12 not found.","level":"error"}
+{"message":"Household with id 12 not found.","level":"error"}
+{"message":"Household with id 12 not found.","level":"error"}
+{"message":"Household with id 12 not found.","level":"error"}
+{"message":"Household with id 12 not found.","level":"error"}
+{"message":"Household with id 12 not found.","level":"error"}
+{"message":"Household with id 13 deleted.","level":"info"}
+{"message":"Household with id 13 not found.","level":"error"}
+{"message":"Household with id 13 not found.","level":"error"}
+{"message":"Household with id 16 created.","level":"info"}
+{"message":"Household with id 16 deleted.","level":"info"}
+{"message":"Household with id 16 not found.","level":"error"}
+{"message":"Household with id 16 not found.","level":"error"}
+{"message":"Household with id 17 created.","level":"info"}
+{"message":"Household with id 17 deleted.","level":"info"}
+{"message":"Household with id 17 not found.","level":"error"}
+{"message":"Household with id 17 not found.","level":"error"}
+{"message":"Household with id 17 not found.","level":"error"}
+{"message":"Household with id 17 not found.","level":"error"}
+{"message":"Household with id 17 not found.","level":"error"}
+{"message":"Household with id 18 created.","level":"info"}
+{"message":"Household with id 18 deleted.","level":"info"}
+{"message":"Household with id 18 not found.","level":"error"}
+{"message":"Household with id 18 not found.","level":"error"}
+{"message":"Household with id 15 deleted.","level":"info"}
+{"message":"Household with id 19 created.","level":"info"}
+{"message":"Household with id 19 deleted.","level":"info"}
+{"message":"Household with id 20 created.","level":"info"}
+{"message":"Household with id 20 deleted.","level":"info"}
+{"message":"Household with id 21 created.","level":"info"}
+{"message":"Household with id 21 deleted.","level":"info"}
+{"message":"Household with id 22 created.","level":"info"}
+{"message":"Household with id 22 deleted.","level":"info"}
+{"message":"Household with id 23 created.","level":"info"}
+{"message":"Household with id 23 deleted.","level":"info"}
+{"message":"Household with id 24 created.","level":"info"}
+{"message":"Household with id 24 deleted.","level":"info"}
+{"message":"Household with id 25 created.","level":"info"}
+{"message":"Household with id 25 deleted.","level":"info"}
+{"message":"Household with id 26 created.","level":"info"}
+{"message":"Household with id 26 deleted.","level":"info"}
+{"message":"Household with id 27 created.","level":"info"}
+{"message":"Household with id 27 deleted.","level":"info"}
+{"message":"Household with id 28 created.","level":"info"}
+{"message":"Household with id 28 deleted.","level":"info"}
+{"message":"Household with id 29 created.","level":"info"}
+{"message":"Household with id 29 deleted.","level":"info"}
+{"message":"Household with id 30 created.","level":"info"}
+{"message":"Household with id 31 created.","level":"info"}
+{"message":"Household with id 32 created.","level":"info"}
+{"message":"name is required","level":"error"}
+{"message":"name is required","level":"error"}
+{"message":"name is required","level":"error"}
+{"message":"household_id is required","level":"error"}
+{"message":"household_id is required","level":"error"}
+{"message":"Kid with id 8 created.","level":"info"}
+{"message":"household_id is required","level":"error"}
+{"message":"household_id is required","level":"error"}
+{"message":"household_id is required","level":"error"}
+{"message":"household_id is required","level":"error"}
+{"message":"household_id is required","level":"error"}
+{"message":"household_id is required","level":"error"}
+{"message":"household_id is required","level":"error"}
+{"message":"household_id is required","level":"error"}
+{"message":"current_stars is required","level":"error"}
+{"message":"current_stars is required","level":"error"}
+{"message":"current_stars is required","level":"error"}
+{"message":"current_stars is required","level":"error"}
+{"message":"current_stars is required","level":"error"}
+{"message":"Kid with id 9 created.","level":"info"}
+{"message":"Kid with id 10 created.","level":"info"}
+{"message":"Household with id 32 deleted.","level":"info"}
+{"message":"Household with id 31 deleted.","level":"info"}
+{"message":"Household with id 33 created.","level":"info"}
+{"message":"Kid with id 11 created.","level":"info"}
+{"message":"Kid with id 12 created.","level":"info"}
+{"message":"Kid with id 13 created.","level":"info"}
+{"message":"Kid with id 14 created.","level":"info"}
+{"message":"Kid with id 2 deleted.","level":"info"}
+{"message":"Kid with id 14 deleted.","level":"info"}
+{"message":"Kid with id 9 deleted.","level":"info"}
+{"message":"Kid with id 13 deleted.","level":"info"}
+{"message":"Kid with id 15 created.","level":"info"}
+{"message":"Kid with id 15 deleted.","level":"info"}
+{"message":"Kid with id 16 created.","level":"info"}
+{"message":"kid_id is required","level":"error"}
+{"message":"kid_id is required","level":"error"}
+{"message":"kid_id is required","level":"error"}
+{"message":"kid_id is required","level":"error"}
+{"message":"kid_id is required","level":"error"}
+{"message":"polarity is required","level":"error"}
+{"message":"polarity is required","level":"error"}
+{"message":"polarity is required","level":"error"}
+{"message":"polarity is required","level":"error"}
+{"message":"polarity is required","level":"error"}
+{"message":"polarity is required","level":"error"}
+{"message":"polarity is required","level":"error"}
+{"message":"polarity is required","level":"error"}
+{"message":"polarity is required","level":"error"}
+{"message":"polarity is required","level":"error"}
+{"message":"Action with id 11 created.","level":"info"}
+{"message":"Action with id 12 created.","level":"info"}
+{"message":"Action with id 13 created.","level":"info"}
+{"message":"Household with id 34 created.","level":"info"}
+{"message":"Kid with id 17 created.","level":"info"}
+{"message":"Household with id 34 deleted.","level":"info"}
+{"message":"Kid with id 16 deleted.","level":"info"}
+{"message":"polarity is required","level":"error"}
+{"message":"Action with id 14 created.","level":"info"}
+{"message":"Kid with id 17 deleted.","level":"info"}
+{"message":"Household with id 30 deleted.","level":"info"}
+{"message":"polarity is required","level":"error"}
+{"message":"polarity is required","level":"error"}
+{"message":"Action with id 15 created.","level":"info"}
+{"message":"Household with id 35 created.","level":"info"}
+{"message":"Action with id 15 deleted.","level":"info"}
+{"message":"Action with id 16 created.","level":"info"}
+{"message":"Action with id 17 created.","level":"info"}
+{"message":"Action with id 14 deleted.","level":"info"}
+{"message":"polarity is required","level":"error"}
+{"message":"polarity is required","level":"error"}
+{"message":"Action with id 18 created.","level":"info"}
+{"message":"Action with id 19 created.","level":"info"}
+{"message":"Action with id 17 deleted.","level":"info"}
+{"message":"Action with id 20 created.","level":"info"}
+{"message":"Action with id 20 deleted.","level":"info"}
+{"message":"Kid with id 18 created.","level":"info"}
+{"message":"Action with id 21 created.","level":"info"}
+{"message":"Action with id 21 deleted.","level":"info"}
+{"message":"Household with id 35 deleted.","level":"info"}
+{"message":"Household with id 36 created.","level":"info"}
+{"message":"Household with id 37 created.","level":"info"}
+{"message":"Kid with id 19 created.","level":"info"}
+{"message":"Household with id 38 created.","level":"info"}
+{"message":"Kid with id 20 created.","level":"info"}
+{"message":"Action with id 22 created.","level":"info"}
+{"message":"polarity is required","level":"error"}
+{"message":"polarity is required","level":"error"}

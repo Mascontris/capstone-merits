@@ -8,10 +8,10 @@ const bodyParser = express.json()
 const serializeKid = kid => ({
   id: kid.id,
   name: xss(kid.name),
-  dob: kid.dob,
+  dob: kid.dob.toLocaleString(),
   household_id: kid.household_id,
   current_stars: kid.current_stars,
-  created_at: kid.created_at
+  created_at: kid.created_at.toLocaleString()
 })
 
 kidRouter
