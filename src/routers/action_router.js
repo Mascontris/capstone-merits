@@ -7,7 +7,7 @@ const actionRouter = express.Router()
 const bodyParser = express.json()
 
 const serializeAction = action => ({
-  id: action.id,
+  id: parseInt(action.id),
   description: xss(action.description),
   kid_id: action.kid_id,
   polarity: action.polarity,
@@ -24,7 +24,7 @@ actionRouter
       .catch(next)
   })
   .post(bodyParser, (req, res, next) => {
-    for (const field of ['description', 'kid_id', 'polarity']) {
+    for (const field of ['description', 'kid_id']) {
       if (!req.body[field]) {
         logger.error(`${field} is required`)
         return res.status(400).send({

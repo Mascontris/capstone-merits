@@ -6,7 +6,7 @@ const kidRouter = express.Router()
 const bodyParser = express.json()
 
 const serializeKid = kid => ({
-  id: kid.id,
+  id: parseInt(kid.id),
   name: xss(kid.name),
   dob: kid.dob.toLocaleString(),
   household_id: kid.household_id,

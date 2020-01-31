@@ -6,7 +6,7 @@ const householdRouter = express.Router();
 const bodyParser = express.json();
 
 const serializeHousehold = household => ({
-  id: household.id,
+  id: parseInt(household.id),
   name: xss(household.name),
   created_at: household.created_at.toTimeString()
 });
