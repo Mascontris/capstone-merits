@@ -1,26 +1,22 @@
-# Express Boilerplate!
+# Merits
+### Link to the Merits App hosted on Zeit.co
+[https://capstone-merits-client.now.sh/](https://capstone-merits-client.now.sh/ "Merits App")
 
-This is a boilerplate project used for starting new projects!
+<img src="Screen Shot.png" height="30%" width="30%"/>
 
-## Set up
+## Parent's Positive Reinforcement Tool
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+### Keep track of good deeds
+Merits helps parents keep track of all the wonderful good things their kids are doing and reward's them when they have reached a set goal of good deeds.
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+### Create a household
+Create a new household for your family and add children that you would like to reward. You can reward them for doing chores, being kind, or just for listening.
 
-## Scripts
+### Add child to household
+Add one or more children to household to keep track of their good deeds and actions.
 
-Start the application `npm start`
+### Add actions to keep track of
+Add actions your child has done that warrant a reward, collect a number of actions that can be redeemed for a prize.
 
-Start nodemon for the application `npm run dev`
-
-Run the tests `npm test`
-
-## Deploying
-
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
+## Technology used
+HTML, CSS, REACT, PostgreSQL, Express
