@@ -47,81 +47,130 @@ A new houseold is created via add households form.
 ```
 
 > _A successful <small>POST</small> 
+
+```JavaScript
 {
     "id": 48,
     "name": "Jackson",
     "created_at": "08:40:50 GMT-0700 (Mountain Standard Time)"
 }
+```
 
-### ▸ `DELETE /api/images/:submission_id`
+### ▸ `DELETE /households`
 
-This endpoint allows a registered and logged in user to remove an image that they posted from the database, specified by `submission_id`. If the `id` of the user making the <small>DELETE</small> request does not match the `user_id` of the submission, the server responds with a status `401`.
+This endpoint allows a user to remove a household, specified by `household_id`.
 
-If no submission could be found by `submission_id`, the server responds with a status `400`.
+If no household could be found by `household_id`, the server responds with a status `400`.
 
-### Comments Endpoints
+### Households Endpoints
 
-### ▸ `GET /api/comments/:submission_id`
+### ▸ `GET /households`
 
-Returns an array of comments associated with an image submission specified by `submission_id`. Every comment contains a `user_id` of the user that posted the comment, but the displayed username is randomly generated on the client to maintain anonymity.
+Returns an array of households created by users.
 
-If no submission could be found by `submission_id`, the server responds with a status `404`.
+**Sample query**
 
+```URL
+/households
+```
 **Example response**
 
 ```JSON
 [
-  {
-    "comment_id": "fcf3fa7b-a1ca-4314-bbd5-5dba75ba5991",
-    "comment_text": "wow that's wild!",
-    "comment_timestamp": "2019-12-12T23:32:14.876Z",
-    "submission_id": 42,
-    "user_id": "7ad87401-dda8-48f0-8ed8-a6bc9756e53c"
-  }
+{
+  "id": 4,
+  "name": "nameTest",
+  "created_at": "04:51:50 GMT-0700 (Mountain Standard Time)"
+    }
 ]
 ```
 
-- **`comment_id`**`- string` - uuid of a comment
-- **`comment_text`**`- string` - the contents of a posted comment
-- **`comment_timestamp`**`- string` - timestamp in ISO format denoting when the comment was created
-- **`submission_id`**`- integer` - the id of an image submission that the comment was posted to
-- **`user_id`**`- string` - uuid of the user that posted the comment
+- **`id`**`- string` - uuid of an household post
+- **`name`**`- string` - the name of household
+- **`created_at`**`- string` - timestamp in ISO format denoting when the household was submitted
 
-### ▸ `POST /api/comments/:submission_id`
+### ▸ `POST /households`
 
-This endpoint allows a registered and logged in user to post a comment to an image submission specified by `submission_id`.
-
-If no submission could be found by `submission_id`, the server responds with a status `404`.
+A new houseold is created via add households form.
 
 **Example request**
 
-```JSON
+```JavaScript
 {
-  "user_id": "7ad87401-dda8-48f0-8ed8-a6bc9756e53c",
-  "comment_text": "wow that's wild!"
+ "name" : "Jackson"
 }
 ```
 
-### Users Endpoints
+> _A successful <small>POST</small> 
 
-### ▸ `GET /api/users/:user_id`
+```JavaScript
+{
+    "id": 48,
+    "name": "Jackson",
+    "created_at": "08:40:50 GMT-0700 (Mountain Standard Time)"
+}
+```
 
-Returns the data for the user specified by `user_id`.
+### ▸ `DELETE /households`
 
-If no user could be found by `user_id`, the server responds with a status `400`.
+This endpoint allows a user to remove a household, specified by `household_id`.
 
+If no household could be found by `household_id`, the server responds with a status `400`.
+
+### Households Endpoints
+
+### ▸ `GET /households`
+
+Returns an array of households created by users.
+
+**Sample query**
+
+```URL
+/households
+```
 **Example response**
 
 ```JSON
+[
 {
-  "id": "7ad87401-dda8-48f0-8ed8-a6bc9756e53c",
-  "karma_balance": 25
+  "id": 4,
+  "name": "nameTest",
+  "created_at": "04:51:50 GMT-0700 (Mountain Standard Time)"
+    }
+]
+```
+
+- **`id`**`- string` - uuid of an household post
+- **`name`**`- string` - the name of household
+- **`created_at`**`- string` - timestamp in ISO format denoting when the household was submitted
+
+### ▸ `POST /households`
+
+A new houseold is created via add households form.
+
+**Example request**
+
+```JavaScript
+{
+ "name" : "Jackson"
 }
 ```
 
-> _The **karma_balance** (i.e. the number of remaining upvotes that a user has) of each registered user in the Anonygram database is reset to 25 every hour, whether or not any karma was spent in that hour._
+> _A successful <small>POST</small> 
 
-> _Note that the `username` of the specified user is not included in the response so as to maintain anonymity._
+```JavaScript
+{
+    "id": 48,
+    "name": "Jackson",
+    "created_at": "08:40:50 GMT-0700 (Mountain Standard Time)"
+}
+```
+
+### ▸ `DELETE /households`
+
+This endpoint allows a user to remove a household, specified by `household_id`.
+
+If no household could be found by `household_id`, the server responds with a status `400`.
 
 ## Technology Stack
 
