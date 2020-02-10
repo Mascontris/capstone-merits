@@ -26,7 +26,7 @@ Returns an array of households created by users.
   "id": 4,
   "name": "nameTest",
   "created_at": "04:51:50 GMT-0700 (Mountain Standard Time)"
-    }
+    },
 ]
 ```
 
