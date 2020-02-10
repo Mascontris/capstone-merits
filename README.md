@@ -76,14 +76,13 @@ Returns an array of children created by users.
 **Example response**
 
 ```JSON
-[
 {
   "id": 6,
   "name": "testName6",
   "dob": "12/13/2015, 12:00:00 AM",
   "household_id": 4,
   "created_at": "12/29/2019, 5:37:12 PM"
-    }
+ }
 ```
 
 - **`id`**`- string` - uuid of an household post
@@ -99,8 +98,9 @@ A new child is created via add children form.
 
 ```JavaScript
 {
- "name" : "Jackson",
- "dob" : 
+ "name" : "kid5",
+ "dob" : "12/13/2015",
+ "houehold_id" : "4"
 }
 ```
 
@@ -116,48 +116,49 @@ A new child is created via add children form.
 }
 ```
 
-### ▸ `DELETE /households`
+### ▸ `DELETE /kids`
 
-This endpoint allows a user to remove a household, specified by `household_id`.
+This endpoint allows a user to remove a child, specified by `kid_id`.
 
-If no household could be found by `household_id`, the server responds with a status `400`.
+If no household could be found by `kid_id`, the server responds with a status `400`.
 
-### Households Endpoints
+### Actions Endpoints
 
-### ▸ `GET /households`
+### ▸ `GET /actions`
 
-Returns an array of households created by users.
+Returns an array of actions created by users.
 
 **Sample query**
 
 ```URL
-/households
+/actions
 ```
 **Example response**
 
 ```JSON
-[
 {
-  "id": 4,
-  "name": "nameTest",
-  "created_at": "04:51:50 GMT-0700 (Mountain Standard Time)"
-    }
-]
+  "id": 61,
+  "description": "Test description of action",
+  "kid_id": 1,
+  "polarity": true,
+  "created_at": "2020-02-10T08:02:54.165Z"
+}
 ```
 
 - **`id`**`- string` - uuid of an household post
-- **`name`**`- string` - the name of household
-- **`created_at`**`- string` - timestamp in ISO format denoting when the household was submitted
+- **`description`**`- string` - description of action performed by child.
+- **`kid_id`**`- string` - id associated with child that performed action 
 
-### ▸ `POST /households`
+### ▸ `POST /actions`
 
-A new houseold is created via add households form.
+A new action is created via add action form.
 
 **Example request**
 
 ```JavaScript
 {
- "name" : "Jackson"
+ "description" : "Played with brother without fighting.",
+  "kid_id" : "1"
 }
 ```
 
@@ -165,29 +166,25 @@ A new houseold is created via add households form.
 
 ```JavaScript
 {
-    "id": 48,
-    "name": "Jackson",
-    "created_at": "08:40:50 GMT-0700 (Mountain Standard Time)"
+    "id": 61,
+    "description": "Test description of action",
+    "kid_id": 1,
+    "polarity": true,
+    "created_at": "2020-02-10T08:02:54.165Z"
 }
 ```
 
-### ▸ `DELETE /households`
+### ▸ `DELETE /actions`
 
-This endpoint allows a user to remove a household, specified by `household_id`.
+This endpoint allows a user to remove an action, specified by `action_id`.
 
-If no household could be found by `household_id`, the server responds with a status `400`.
+If no action could be found by `action_id`, the server responds with a status `400`.
 
 ## Technology Stack
 
 ### Backend
 - **Express** for handling API requests
 - **Node** for interacting with the file system 
-- **Multer** for handling file uploads
-- **AWS SDK** for interfacing with Amazon's S3 service
-- **Sharp** for image manipulation / compression
-- **Google Vision** for image recognition / content arbitration
-- **Google Places** for retrieving local business images
 - **Knex.js** for interfacing with the **PostgreSQL** database
 - **Postgrator** for database migration
 - **Mocha**, **Chai**, **Supertest** for endpoints testing
-- **JSON Web Token**, **bcryptjs** for user authentication / authorization
