@@ -62,42 +62,45 @@ This endpoint allows a user to remove a household, specified by `household_id`.
 
 If no household could be found by `household_id`, the server responds with a status `400`.
 
-### Households Endpoints
+### Kids Endpoints
 
-### ▸ `GET /households`
+### ▸ `GET /kids`
 
-Returns an array of households created by users.
+Returns an array of children created by users.
 
 **Sample query**
 
 ```URL
-/households
+/kids
 ```
 **Example response**
 
 ```JSON
 [
 {
-  "id": 4,
-  "name": "nameTest",
-  "created_at": "04:51:50 GMT-0700 (Mountain Standard Time)"
+  "id": 6,
+  "name": "testName6",
+  "dob": "12/13/2015, 12:00:00 AM",
+  "household_id": 4,
+  "created_at": "12/29/2019, 5:37:12 PM"
     }
-]
 ```
 
 - **`id`**`- string` - uuid of an household post
-- **`name`**`- string` - the name of household
+- **`name`**`- string` - the name of child
+- **`dob`**` - string` - date of birth
 - **`created_at`**`- string` - timestamp in ISO format denoting when the household was submitted
 
-### ▸ `POST /households`
+### ▸ `POST /kids`
 
-A new houseold is created via add households form.
+A new child is created via add children form.
 
 **Example request**
 
 ```JavaScript
 {
- "name" : "Jackson"
+ "name" : "Jackson",
+ "dob" : 
 }
 ```
 
@@ -105,9 +108,11 @@ A new houseold is created via add households form.
 
 ```JavaScript
 {
-    "id": 48,
-    "name": "Jackson",
-    "created_at": "08:40:50 GMT-0700 (Mountain Standard Time)"
+    "id": 34,
+    "name": "kid5",
+    "dob": "12/13/2015, 12:00:00 AM",
+    "household_id": 4,
+    "created_at": "2/10/2020, 12:32:19 AM"
 }
 ```
 
