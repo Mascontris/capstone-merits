@@ -14,6 +14,7 @@ const serializeAction = action => ({
   created_at: action.created_at
 })
 
+//Gets all actions
 actionRouter
   .route('/actions')
   .get((req, res, next) => {
@@ -58,6 +59,7 @@ actionRouter
       .catch(next)
   })
 
+//Get action by id
 actionRouter
   .route('/actions/:action_id')
   .all((req, res, next) => {

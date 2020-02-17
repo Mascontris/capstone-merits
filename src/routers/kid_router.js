@@ -14,6 +14,7 @@ const serializeKid = kid => ({
   created_at: kid.created_at.toLocaleString()
 })
 
+//Get all kids
 kidRouter
   .route('/kids')
   .get((req, res, next) => {
@@ -60,6 +61,7 @@ kidRouter
       .catch(next)
   })
 
+//Get kid by id
 kidRouter
   .route('/kids/:kid_id')
   .all((req, res, next) => {

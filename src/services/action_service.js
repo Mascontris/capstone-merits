@@ -19,11 +19,6 @@ const ActionService = {
         .where({ id: action_id })
         .delete()
     },
-    // updateHousehold(knex, id, newHouseholdFields) {
-    //   return knex('households')
-    //     .where({ id })
-    //     .update(newHouseholdFields)
-    // },
   }
   
   module.exports = ActionService

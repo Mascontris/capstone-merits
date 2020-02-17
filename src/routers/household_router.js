@@ -11,6 +11,7 @@ const serializeHousehold = household => ({
   created_at: household.created_at.toTimeString()
 });
 
+//Get all households
 householdRouter
   .route("/households")
   .get((req, res, next) => {
@@ -49,6 +50,7 @@ householdRouter
       .catch(next)
   })
 
+//Get household by id
 householdRouter
   .route("/households/:household_id")
   .all((req, res, next) => {
